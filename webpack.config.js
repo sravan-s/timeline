@@ -2,7 +2,7 @@ const webpack = require('webpack'); //to access built-in plugins
 const path = require('path');
 
 const config = {
-  entry: path.resolve(__dirname, 'src/index.js'),
+  entry: path.resolve(__dirname, 'src/app.js'),
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'app.js'
@@ -21,9 +21,10 @@ const config = {
   },
 
   devServer: {
-    contentBase: path.join(__dirname, '/'),
+    contentBase: path.resolve(__dirname + '/src'),
     compress: true,
-    port: 9000
+    hot: true,
+    port: 9080
   },
 
   plugins: [
@@ -32,7 +33,7 @@ const config = {
 
     new webpack.NamedModulesPlugin(),
     // prints more readable module names in the browser console on HMR updates
-  ],
+  ]
 };
 
 module.exports = config;
