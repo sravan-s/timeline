@@ -10,7 +10,7 @@ const initialState = {
   }]
 };
 
-export function todoApp(state = initialState, action) {
+export default function todoApp(state = initialState, action) {
   switch (action.type) {
     case INIT_APP:
       return Object.assign({}, state, {
