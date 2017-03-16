@@ -4,6 +4,7 @@ const path = require('path');
 const config = {
   entry: [
     'babel-polyfill',
+    'whatwg-fetch',
     path.resolve(__dirname, 'src/app.js')
   ],
   output: {
@@ -27,7 +28,15 @@ const config = {
     contentBase: path.resolve(__dirname + '/src'),
     compress: true,
     hot: true,
-    port: 9080
+    port: 9080,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:9000',
+        pathRewrite: {
+          '^/api' : ''
+        }
+      }
+    }
   },
 
   plugins: [

@@ -5,6 +5,10 @@ function* saga() {
 }
 
 export function* helloSaga() {
+  fetch('/api/person')
+    .then(response => {
+      console.log(response.json());
+    });
   console.warn('Hello Sagas!');
 }
 
