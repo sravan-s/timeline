@@ -2,7 +2,10 @@ const webpack = require('webpack'); //to access built-in plugins
 const path = require('path');
 
 const config = {
-  entry: path.resolve(__dirname, 'src/app.js'),
+  entry: [
+    'babel-polyfill',
+    path.resolve(__dirname, 'src/app.js')
+  ],
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'app.js'
