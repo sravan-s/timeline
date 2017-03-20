@@ -5,19 +5,27 @@ import { initApp } from './../../actions';
 import TimelineSummaryItem from './../../components/TimelineSummaryItem';
 
 const mapStateToProps = (state, ownProps) => {
-  console.log({ state, ownProps });
   return { state, ownProps };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onClick: () => {
-      dispatch(initApp(ownProps.filter));
+      console.log('dispactcing', dispatch, ownProps);
+      dispatch(initApp());
     }
   };
 };
 
 class LandingPageContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.init = props;
+  }
+  componentDidMount() {
+    console.log(this.init);
+    this.init.onClick();
+  }
   render() {
     return (
       <div>
